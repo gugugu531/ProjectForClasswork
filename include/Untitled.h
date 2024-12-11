@@ -1,7 +1,7 @@
 #ifndef UNTITLED
 #define UNTITLED
 
-typedef struct
+typedef struct STUDENT
 {
     int StudentID;
     char Name[20];
@@ -12,7 +12,7 @@ typedef struct
     int phoneNumber;
     int qqNumber;
     char emailAddr[35];
-    Student* next;
+
 }Student;
 
 
