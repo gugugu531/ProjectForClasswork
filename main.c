@@ -11,6 +11,7 @@ int main(void)
     {
         ShowTheMenu();  //显示菜单
         ReadCmd();  //读取命令并执行
+        ClearTheSurface();  //刷新程序界面
     }
 
     return 0;
