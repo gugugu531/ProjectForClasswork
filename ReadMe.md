@@ -1,7 +1,7 @@
 # 学生通讯录系统
 
 本项目采用 **CMake** 搭建，**CMake**最低版本要求为2.8
-![CMake](\image\CMake.png)
+![CMake](/image/CMake.png)
 
 ***
 
