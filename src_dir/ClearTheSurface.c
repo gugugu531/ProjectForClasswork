@@ -1,7 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "../include/Untitled.h"
 
 void ClearTheSurface(void)
 {
-    printf("33[H33[J");
+    system("cls");    
 }

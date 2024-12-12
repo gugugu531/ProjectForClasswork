@@ -11,5 +11,5 @@ void ShowTheMenu(void)
     printf("4：查找\n");
     printf("5：导出数据\n");
     printf("6：给指定学生发送邮件\n");
-    printf("请输入你想执行的操作的对应数字：");
+    printf("********************************\n");
 }
