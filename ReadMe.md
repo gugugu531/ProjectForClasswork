@@ -2,7 +2,7 @@
 
 本项目采用 **CMake** 搭建  
 **CMake**最低版本要求为2.8
-![CMake](/image/CMake.png#picleft=6x6)
+![CMake](/image/CMake.png=6x6)
 
 ***
 
