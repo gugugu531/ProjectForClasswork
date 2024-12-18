@@ -2,10 +2,14 @@
 #include <Windows.h>
 #include "..\include\Untitled.h"
 
+void func_exit(void);//程序退出时执行此程序，用于保存日志文件
+
 int main(void)
 {
     SetConsoleCP(CP_UTF8);  //配置控制台应用输入为UTF-8编码
     SetConsoleOutputCP(CP_UTF8);    //配置控制台应用输出为UTF-8编码
+
+    atexit(func_exit);
 
     SaveTheLog(BEGIN);
 
@@ -19,4 +23,11 @@ int main(void)
     }
 
     return 0;
+}
+
+void func_exit(void)
+{
+    ClearTheSurface();
+    printf("保存数据中，即将退出程序");
+    SaveTheLog(EXIT);
 }

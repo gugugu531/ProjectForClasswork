@@ -10,10 +10,90 @@ void ShowTheData(void)
     system("pause");
 }
 
-void ImportTheData(void)
+void ImportTheData(Student* phead)
 {
-    printf("ImportTheData: no error\n");
-    system("pause");
+/*     printf("ImportTheData: no error\n");
+    system("pause"); */
+
+    int cmd;
+    printf("请确保原来没有写入数据！\n");
+    printf("输入1继续，0退出：");
+    L:
+    scanf("%d", &cmd);
+    switch (cmd)
+    {
+    case 1:
+        fflush(stdin);
+        break;
+    case 2:
+        fflush(stdin);
+        return;
+        break;
+    default:
+        printf("请输入正确的指令！");
+        fflush(stdin);
+        goto L;
+        break;
+    }
+
+    if (phead != NULL)
+    {
+        printf("内存中已写入数据！\n");
+        printf("此功能即将退出。\n");
+        return;
+    }
+    
+
+    char filepath[50];
+    L2:
+    printf("请输入文件所在路径：");
+    fflush(stdin);
+    scanf("%s", filepath);
+    FILE *file = fopen(filepath, "r");
+    if (!file) 
+    {
+        printf("打开指定文件失败\n");
+        goto L2;
+    }
+
+
+    Student* pnew = NULL, *pold = NULL;
+    
+    for ( ; ; )
+    {
+/*
+*申请内存（若申请不到则显示错误信息并退出程序）
+*/
+        pnew = (Student*)malloc(sizeof(Student));
+        if (pnew == NULL)
+        {
+            printf("堆区内存已用完！即将退出程序！");
+            Sleep(3000);
+            exit(0);
+        }
+
+        if (phead == NULL)//第一次插入数据时若分配到内存空间则将链表头设置为pnew
+        {
+            phead = pnew;
+        }
+
+        if (pold != NULL)//如果已创建了一个节点就使老节点中指针指向下一个节点
+            pold->pnext = pnew;
+
+//待办：检查数据合理性
+//待办：读入数据并写入链表模块        
+
+        Student* pnew = NULL, *pold = NULL;
+
+/*
+*此部分用来更新节点状态，保存现在已创建节点地址，
+*并将节点内指向下一节点的指针设为NULL，为接下来创建新节点做准备
+*/
+        pold = pnew;
+        pold->pnext = NULL;
+    }
+    fclose(file);
+    printf("已成功导入！");
 }
 
 void ExportTheData(Student* phead)
@@ -89,7 +169,7 @@ void SaveTheLog(const char* str)
         Sleep(3000);
         return;
     }
-    fprintf(logfile, "%s\n", ctime(&current));
+    fprintf(logfile, "%s", ctime(&current));
     fprintf(logfile, str);
 
     fclose(logfile);

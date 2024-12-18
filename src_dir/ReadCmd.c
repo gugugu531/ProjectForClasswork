@@ -37,7 +37,11 @@ Student* ReadCmd(Student* phead)
             break;
         case 6:
             ClearTheSurface();
-            ImportTheData();
+            SendEmail();
+            break;
+        case 7:
+            ClearTheSurface();
+            ImportTheData(phead);
             break;
         default:
             printf("请输入正确的指令！请重新输入！\n");
