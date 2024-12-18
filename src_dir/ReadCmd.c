@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "../include/Untitled.h"
 
-void ReadCmd(void)
+Student* ReadCmd(Student* phead)
 {
     int cmd = 0;
 
@@ -10,11 +10,12 @@ void ReadCmd(void)
 
     if (scanf("%d", &cmd))
     {
+        fflush(stdin);
         switch (cmd)
         {
         case 1:
             ClearTheSurface();
-            Insert();
+            phead = Create(phead);
             break;
         case 2:
             ClearTheSurface();
@@ -30,15 +31,15 @@ void ReadCmd(void)
             break;
         case 5:
             ClearTheSurface();
-            ImportTheData();
+            ExportTheData(phead);
             break;
         case 6:
             ClearTheSurface();
-            ExportTheData();
+            ImportTheData();
             break;
         default:
             printf("请输入正确的指令！请重新输入！\n");
-            ReadCmd();
+            ReadCmd(phead);
             break;
         }
     }
@@ -46,6 +47,7 @@ void ReadCmd(void)
     {
         printf("输入命令错误！请重新输入！\n");
         fflush(stdin);
-        ReadCmd();
+        ReadCmd(phead);
     }
+    return phead;
 }
