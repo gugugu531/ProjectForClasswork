@@ -31,7 +31,7 @@ void ExportTheData(Student* phead)
     {
         fprintf(file, "%s,%d,%c,%s,%s,%s,%d,%d,%s\n", phead->Name, phead->StudentID, phead->gender, phead->school, phead->major,
         phead->address, phead->phoneNumber, phead->qqNumber, phead->emailAddr);
-        if (phead->pnext = NULL)
+        if (phead->pnext == NULL)
             break;
         phead = phead->pnext; 
     }
@@ -65,18 +65,32 @@ void ExportTheData(Student* phead)
         current = current->pnext;
     }
     fclose(file);
-    printf("数据已导出至%s\n", FILE_NAME);
+    printf("数据已导出至%s", FILE_NAME);
     Sleep(3000);
 }
 
+//忘记这个要干嘛了。。。
 void SaveTheData(void)
 {
     printf("SaveTheData: no error\n");
     system("pause");
 }
 
-void SaveTheLog(void)
+void SaveTheLog(const char* str)
 {
-    printf("SaveTheData: no error\n");
-    system("pause");
+/*     printf("SaveTheData: no error\n");
+    system("pause"); */
+    time_t current;
+    time(&current);
+    FILE *logfile = fopen(LOGFILE_NAME, "a+");
+    if (!logfile) 
+    {
+        printf("打开或创建目录文件失败\n");
+        Sleep(3000);
+        return;
+    }
+    fprintf(logfile, "%s\n", ctime(&current));
+    fprintf(logfile, str);
+
+    fclose(logfile);
 }

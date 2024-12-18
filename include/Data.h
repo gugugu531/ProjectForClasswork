@@ -4,7 +4,7 @@
 #include "Untitled.h"
 #include "Student.h"
 
-void SaveTheLog(void);
+void SaveTheLog(const char* str);
 
 void SaveTheData(void);
 

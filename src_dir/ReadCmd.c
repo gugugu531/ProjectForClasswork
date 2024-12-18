@@ -16,6 +16,7 @@ Student* ReadCmd(Student* phead)
         case 1:
             ClearTheSurface();
             phead = Create(phead);
+            SaveTheLog(CREATE);
             break;
         case 2:
             ClearTheSurface();
@@ -32,6 +33,7 @@ Student* ReadCmd(Student* phead)
         case 5:
             ClearTheSurface();
             ExportTheData(phead);
+            SaveTheLog(EXPORT_THE_DATA);
             break;
         case 6:
             ClearTheSurface();
