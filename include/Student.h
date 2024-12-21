@@ -3,14 +3,14 @@
 
 typedef struct student
 {
-    int StudentID;
+    char StudentID[20];
     char Name[20];
-    char gender;
+    char gender[2];
     char school[20];
     char major[20];
     char address[20];
-    int phoneNumber;
-    int qqNumber;
+    char phoneNumber[20];
+    char qqNumber[20];
     char emailAddr[35];
     struct student * pnext;
 }Student;

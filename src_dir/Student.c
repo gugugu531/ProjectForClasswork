@@ -35,10 +35,10 @@ Student* Create(Student* phead)
         scanf("%s", &pnew->Name);
         fflush(stdin);
         printf("请输入学生学号:");
-        scanf("%d", &pnew->StudentID);
+        scanf("%s", &pnew->StudentID);
         fflush(stdin);
         printf("请输入学生性别：(M为男，W为女)");
-        scanf("%c", &pnew->gender);
+        scanf("%s", &pnew->gender);
         fflush(stdin);
         printf("请输入学生所属学院：");
         scanf("%s", &pnew->school);
@@ -50,10 +50,10 @@ Student* Create(Student* phead)
         scanf("%s", &pnew->address);
         fflush(stdin);
         printf("请输入学生电话号码：");
-        scanf("%d", &pnew->phoneNumber);
+        scanf("%s", &pnew->phoneNumber);
         fflush(stdin);
         printf("请输入学生QQ号：");
-        scanf("%d", &pnew->qqNumber);
+        scanf("%s", &pnew->qqNumber);
         fflush(stdin);
         printf("请输入学生电子邮箱地址：");
         scanf("%s", &pnew->emailAddr);

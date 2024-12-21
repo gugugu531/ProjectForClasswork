@@ -21,6 +21,6 @@ void ImportTheData(Student* phead);
 */
 void ExportTheData(Student* phead);
 
-void ShowTheData(void);
+void ShowTheData(Student* phead);
 
 #endif

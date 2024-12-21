@@ -43,6 +43,10 @@ Student* ReadCmd(Student* phead)
             ClearTheSurface();
             ImportTheData(phead);
             break;
+        case 8:
+            ClearTheSurface();
+            ShowTheData(phead);
+            break;
         default:
             printf("请输入正确的指令！请重新输入！\n");
             ReadCmd(phead);

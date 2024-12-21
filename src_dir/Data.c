@@ -4,10 +4,35 @@
 #include <windows.h>
 #include "../include/Untitled.h"
 
-void ShowTheData(void)
+void ShowTheData(Student* phead)
 {
-    printf("ShowTheData: no error\n");
-    system("pause");
+    Student* current = phead;
+    if (current == NULL)
+    {
+        printf("没有数据，无法显示！\n");
+        printf("该子程序即将退出！\n");
+        Sleep(3000);
+        return;
+    }
+    for ( ; current != NULL; )
+    {
+        printf("********************************\n");
+        printf("StudentID:%s\n", current->StudentID);
+        printf("Name:%s\n", current->Name);
+        printf("Gender:%s\n", current->gender);
+        printf("School:%s\n", current->school);
+        printf("Major:%s\n", current->major);
+        printf("Address:%s\n", current->address);
+        printf("Phone number:%s\n", current->phoneNumber);
+        printf("QQ number:%s\n", current->qqNumber);
+        printf("Email address:%s\n", current->emailAddr);
+        current = current->pnext;
+    }
+    printf("********************************\n");
+    
+    int cmd;
+    printf("输入0退出：");
+    scanf("%d", &cmd);
 }
 
 void ImportTheData(Student* phead)
@@ -81,9 +106,37 @@ void ImportTheData(Student* phead)
             pold->pnext = pnew;
 
 //待办：检查数据合理性
-//待办：读入数据并写入链表模块        
+//待办：读入数据并写入链表模块
+        char line[100];
+        fscanf(file, "%s", line);
 
-        Student* pnew = NULL, *pold = NULL;
+        char* token;
+        token = strtok(line, ",");
+        strcpy(pnew->StudentID, token);
+
+        token = strtok(NULL, ",");
+        strcpy(pnew->Name, token);
+
+        token = strtok(NULL, ",");
+        strcpy(pnew->gender, token);
+
+        token = strtok(NULL, ",");
+        strcpy(pnew->school, token);
+
+        token = strtok(NULL, ",");
+        strcpy(pnew->major, token);
+
+        token = strtok(NULL, ",");
+        strcpy(pnew->address, token);
+
+        token = strtok(NULL, ",");
+        strcpy(pnew->phoneNumber, token);
+
+        token = strtok(NULL, ",");
+        strcpy(pnew->qqNumber, token);
+
+        token = strtok(NULL, ",");
+        strcpy(pnew->emailAddr, token);
 
 /*
 *此部分用来更新节点状态，保存现在已创建节点地址，
@@ -158,8 +211,6 @@ void SaveTheData(void)
 
 void SaveTheLog(const char* str)
 {
-/*     printf("SaveTheData: no error\n");
-    system("pause"); */
     time_t current;
     time(&current);
     FILE *logfile = fopen(LOGFILE_NAME, "a+");

@@ -12,5 +12,6 @@ void ShowTheMenu(void)
     printf("5：导出数据\n");
     printf("6：给指定学生发送邮件\n");
     printf("7：导入数据\n");
+    printf("8：展示数据\n");
     printf("********************************\n");
 }
