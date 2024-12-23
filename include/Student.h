@@ -22,11 +22,15 @@ Student* Create(Student* phead);
 
 Student* Delete(Student* phead);
 
-void Modify(void);
+void Modify(Student* phead);
 
 void FuzzySearch(void);
 
-void Sort(void);
+Student* Sort(Student* phead);
+
+Student* IDSort(Student* phead);
+
+Student* NameSort(Student* phead);
 
 void SendEmail(void);
 

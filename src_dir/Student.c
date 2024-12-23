@@ -173,17 +173,174 @@ Student* Delete(Student* phead)
         return phead;
     }
 }
-void Modify(void)
+void Modify(Student* phead)
 {
-    printf("Modify: no error\n");
-    system("pause");
+    char id[20];
+    printf("请输入要删除学生学号：");
+    scanf("%s", id);
+    
+    Student* current = phead;
+
+    if (current == NULL)
+    {
+        printf("数据为空，无法执行操作，即将退出");
+        Sleep(3000);
+        return;
+    }
+    for ( ; current != NULL; )
+    {
+        if (strcmp(current->StudentID, id) == 0)
+        {
+            goto L1;
+        }
+        current = current->pnext;
+    }
+    goto L2;
+
+    L1:
+    {
+        printf("要修改学生信息为：\n");
+        printf("********************************\n");
+        printf("StudentID:%s\n", current->StudentID);
+        printf("Name:%s\n", current->Name);
+        printf("Gender:%s\n", current->gender);
+        printf("School:%s\n", current->school);
+        printf("Major:%s\n", current->major);
+        printf("Address:%s\n", current->address);
+        printf("Phone number:%s\n", current->phoneNumber);
+        printf("QQ number:%s\n", current->qqNumber);
+        printf("Email address:%s\n", current->emailAddr);
+        printf("********************************\n");
+        printf("确认修改？（输入0退出，输入1继续）\n");
+        
+        int cmd;
+        scanf("%d", &cmd);
+
+        L11:
+        switch (cmd)
+        {
+        case 0:
+            return;
+            break;
+        case 1:
+            printf("请输入学生姓名：");
+            scanf("%s", &current->Name);
+            fflush(stdin);
+            printf("请输入学生学号:");
+            scanf("%s", &current->StudentID);
+            fflush(stdin);
+            printf("请输入学生性别：(M为男，W为女)");
+            scanf("%s", &current->gender);
+            fflush(stdin);
+            printf("请输入学生所属学院：");
+            scanf("%s", &current->school);
+            fflush(stdin);
+            printf("请输入学生专业 ：");
+            scanf("%s", &current->major);
+            fflush(stdin);
+            printf("请输入学生居住地址：");
+            scanf("%s", &current->address);
+            fflush(stdin);
+            printf("请输入学生电话号码：");
+            scanf("%s", &current->phoneNumber);
+            fflush(stdin);
+            printf("请输入学生QQ号：");
+            scanf("%s", &current->qqNumber);
+            fflush(stdin);
+            printf("请输入学生电子邮箱地址：");
+            scanf("%s", &current->emailAddr);
+            fflush(stdin);
+            return;
+            break; 
+        default:
+            printf("请输入正确的指令！");
+            goto L11;
+            break;
+        }
+    }
+
+    L2:
+    {
+        printf("未能找到指定学生！\n");
+        printf("程序即将退出！\n");
+        Sleep(3000);
+        return;
+    }
 }
 
-void Sort(void)
+//sort部分未完成
+
+Student* Sort(Student* phead)
 {
-    printf("Sort: no error\n");
-    system("pause");
+/*     printf("Sort: no error\n");
+    system("pause"); */
+    printf("请选择排序方式：（1.学号排序；2.姓名排序）");
+
+    int cmd;
+    scanf("%d", &cmd);
+    switch (cmd)
+    {
+    case 1:
+        phead = IDSort(phead);
+        break;
+    case 2:
+        phead = NameSort(phead);
+        break;
+    default:
+        break;
+    }
 }
+
+Student* IDSort(Student* phead)
+{
+    Student* min;
+    for (Student* current1 = phead; current1 != NULL; current1 = current1->pnext)
+    {
+        min = current1;
+        for (Student* current2 = current1->pnext; current2 != NULL; current2 = current2->pnext)
+        {
+            if (strcmp(current2->StudentID, min->StudentID) < 0)
+            {
+                min = current2;
+            }
+        }
+
+        if (min != current1)
+        {
+            Student* temp;
+            temp = current1;
+            current1 = min;
+            min = temp;
+        }
+    }
+    return min;
+}
+
+Student* NameSort(Student* phead)
+{
+    Student* min;
+    for (Student* current1 = phead; current1 != NULL; current1 = current1->pnext)
+    {
+        min = current1;
+        for (Student* current2 = current1->pnext; current2 != NULL; current2 = current2->pnext)
+        {
+            if (strcmp(current2->Name, min->Name) < 0)
+            {
+                min = current2;
+            }
+        }
+
+        if (min != current1)
+        {
+            Student* temp;
+            temp = current1;
+            current1 = min;
+            min = temp;
+        }
+    }
+    return min;
+}
+
 
 void FuzzySearch(void)
 {

@@ -24,7 +24,7 @@ Student* ReadCmd(Student* phead)
             break;
         case 3:
             ClearTheSurface();
-            Modify();
+            Modify(phead);
             break;
         case 4:
             ClearTheSurface();
@@ -46,6 +46,10 @@ Student* ReadCmd(Student* phead)
         case 8:
             ClearTheSurface();
             ShowTheData(phead);
+            break;
+        case 9:
+            ClearTheSurface();
+            phead = Sort(phead);
             break;
         default:
             printf("请输入正确的指令！请重新输入！\n");
