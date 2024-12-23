@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <windows.h>
 #include "../include/Untitled.h"
 
@@ -93,10 +94,84 @@ Student* Create(Student* phead)
         }
     }
 }
-void Delete(void)
+Student* Delete(Student* phead)
 {
-    printf("Delete: no error\n");
-    system("pause");
+/*     printf("Delete: no error\n");
+    system("pause");*/
+    char id[20];
+    printf("请输入要删除学生学号：");
+    scanf("%s", id);
+    
+    Student* current = phead;
+    Student* previous = NULL;
+
+    if (current == NULL)
+    {
+        printf("数据为空，无法执行操作，即将退出");
+        Sleep(3000);
+        return current;
+    }
+    for ( ; current != NULL; )
+    {
+        if (strcmp(current->StudentID, id) == 0)
+        {
+            goto L1;
+        }
+        previous = current;
+        current = current->pnext;
+    }
+    goto L2;
+
+    L1:
+    {
+        printf("要删除学生信息为：\n");
+        printf("********************************\n");
+        printf("StudentID:%s\n", current->StudentID);
+        printf("Name:%s\n", current->Name);
+        printf("Gender:%s\n", current->gender);
+        printf("School:%s\n", current->school);
+        printf("Major:%s\n", current->major);
+        printf("Address:%s\n", current->address);
+        printf("Phone number:%s\n", current->phoneNumber);
+        printf("QQ number:%s\n", current->qqNumber);
+        printf("Email address:%s\n", current->emailAddr);
+        printf("********************************\n");
+        printf("确认删除？（输入0退出，输入1继续）\n");
+        
+        int cmd;
+        scanf("%d", &cmd);
+
+        L11:
+        switch (cmd)
+        {
+        case 0:
+            return phead;
+            break;
+        case 1:
+            if (previous == NULL)
+            {
+                phead = current->pnext;
+                free(current);
+                return phead;
+            }
+            previous->pnext = current->pnext;
+            free(current);
+            return phead;
+            break; 
+        default:
+            printf("请输入正确的指令！");
+            goto L11;
+            break;
+        }
+    }
+
+    L2:
+    {
+        printf("未能找到指定学生！\n");
+        printf("程序即将退出！\n");
+        Sleep(3000);
+        return phead;
+    }
 }
 void Modify(void)
 {

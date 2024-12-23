@@ -50,3 +50,17 @@ Sat Dec 21 10:55:33 2024
 ran this program
 Sat Dec 21 10:56:21 2024
 added a series of data
+Mon Dec 23 20:40:57 2024
+ran this program
+Mon Dec 23 20:43:31 2024
+added a series of data
+Mon Dec 23 20:51:12 2024
+ran this program
+Mon Dec 23 20:53:39 2024
+added a series of data
+Mon Dec 23 20:56:10 2024
+ran this program
+Mon Dec 23 20:59:11 2024
+added a series of data
+Mon Dec 23 21:00:04 2024
+export the data

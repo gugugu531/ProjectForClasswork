@@ -20,7 +20,7 @@ typedef struct student
 */
 Student* Create(Student* phead);
 
-void Delete(void);
+Student* Delete(Student* phead);
 
 void Modify(void);
 

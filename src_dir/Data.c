@@ -191,7 +191,7 @@ void ExportTheData(Student* phead)
     Student *current = phead;
 
     while (current) {
-        fprintf(file, "%d,%s,%c,%s,%s,%s,%d,%d,%s\n",
+        fprintf(file, "%s,%s,%s,%s,%s,%s,%s,%s,%s\n",
                 current->StudentID, current->Name, current->gender, current->school, current->major,
                 current->address, current->phoneNumber, current->qqNumber, current->emailAddr);
         fflush(stdout);

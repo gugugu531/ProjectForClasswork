@@ -20,7 +20,7 @@ Student* ReadCmd(Student* phead)
             break;
         case 2:
             ClearTheSurface();
-            Delete();
+            phead = Delete(phead);
             break;
         case 3:
             ClearTheSurface();
