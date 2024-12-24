@@ -379,13 +379,63 @@ void FuzzySearch(Student* phead)
         if (strstr(current->qqNumber, str) != NULL)
             goto L1;
         if (strstr(current->emailAddr, str) != NULL)
-            goto L1;        
+            goto L1;
+        
+        L2:
     }
 
     //此处判断是否查找到结果，若没查找到，显示信息后直接退出程序
     //若查找到，则输出满足条件学生信息，输出后记得free
+    if ( sortphead == NULL)
+    {
+        printf("没有查到相应结果，子功能即将退出！");
+        Sleep(3000);
+        return;
+    }
 
+    printf("搜索结果如下：\n");
+    ShowTheData(sortphead);
+
+    for ( Student* FreeCurrent = sortphead, *FreePrevious = NULL; FreeCurrent != NULL; )
+    {
+        FreePrevious = FreeCurrent;
+        FreeCurrent = FreeCurrent->pnext;
+        free(FreePrevious);
+        FreePrevious = NULL;
+    }
+    
+    return;
     L1:
     //此处重新创建一个链表，仅用于搜索，展示结束后记得free
+
     
+/*
+*申请内存（若申请不到则显示错误信息并退出程序）
+*/
+    sortpnew = (Student*)malloc(sizeof(Student));
+    if (sortpnew == NULL)
+    {
+        printf("堆区内存已用完！即将退出程序！");
+        Sleep(3000);
+        exit(0);
+    }
+
+    if (sortphead == NULL)//第一次插入数据时若分配到内存空间则将链表头设置为pnew
+    {
+        sortphead = sortpnew;
+    }
+
+    if (sortpold != NULL)//如果已创建了一个节点就使老节点中指针指向下一个节点
+        sortpold->pnext = sortpnew;
+
+    *sortpnew = *current;
+
+/*
+*此部分用来更新节点状态，保存现在已创建节点地址，
+*并将节点内指向下一节点的指针设为NULL，为接下来创建新节点做准备
+*/
+    sortpold = sortpnew;
+    sortpold->pnext = NULL;
+    
+    goto L2;
 }
