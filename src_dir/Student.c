@@ -176,7 +176,7 @@ Student* Delete(Student* phead)
 void Modify(Student* phead)
 {
     char id[20];
-    printf("请输入要删除学生学号：");
+    printf("请输入要修改学生学号：");
     scanf("%s", id);
     
     Student* current = phead;
@@ -272,8 +272,7 @@ void Modify(Student* phead)
 
 Student* Sort(Student* phead)
 {
-/*     printf("Sort: no error\n");
-    system("pause"); */
+
     printf("请选择排序方式：（1.学号排序；2.姓名排序）");
 
     int cmd;
@@ -307,13 +306,15 @@ Student* IDSort(Student* phead)
 
         if (min != current1)
         {
-            Student* temp;
-            temp = current1;
-            current1 = min;
-            min = temp;
+            Student temp;
+            temp = *current1;
+            *current1 = *min;
+            *min = temp;
+            min->pnext = current1->pnext;
+            current1->pnext = temp.pnext;
         }
     }
-    return min;
+    return phead;
 }
 
 Student* NameSort(Student* phead)
@@ -332,18 +333,22 @@ Student* NameSort(Student* phead)
 
         if (min != current1)
         {
-            Student* temp;
-            temp = current1;
-            current1 = min;
-            min = temp;
+            Student temp;
+            temp = *current1;
+            *current1 = *min;
+            *min = temp;
+            min->pnext = current1->pnext;
+            current1->pnext = temp.pnext;
         }
     }
-    return min;
+    return phead;
 }
 
 
 void FuzzySearch(void)
 {
-    printf("FuzzySearch: no error\n");
-    system("pause");
+/*     printf("FuzzySearch: no error\n");
+    system("pause"); */
+
+    
 }

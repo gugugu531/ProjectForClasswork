@@ -37,8 +37,6 @@ void ShowTheData(Student* phead)
 
 void ImportTheData(Student* phead)
 {
-/*     printf("ImportTheData: no error\n");
-    system("pause"); */
 
     int cmd;
     printf("请确保原来没有写入数据！\n");
@@ -151,27 +149,6 @@ void ImportTheData(Student* phead)
 
 void ExportTheData(Student* phead)
 {
-/* 
-    if (phead == NULL)
-    {
-        printf("没有数据，无法导出！\n");
-        printf("3秒后退出！\n");
-        Sleep(3000);
-        return 0;
-    }
-    FILE* file = fopen(FILE_NAME, "w");
-    for ( ; ; )
-    {
-        fprintf(file, "%s,%d,%c,%s,%s,%s,%d,%d,%s\n", phead->Name, phead->StudentID, phead->gender, phead->school, phead->major,
-        phead->address, phead->phoneNumber, phead->qqNumber, phead->emailAddr);
-        if (phead->pnext == NULL)
-            break;
-        phead = phead->pnext; 
-    }
-    fclose(file);
-    printf("数据已导出为csv格式！");
-    Sleep(3000);
-    return 0; */
     if (phead == NULL)
     {
         printf("没有数据，无法导出！\n");
@@ -200,13 +177,6 @@ void ExportTheData(Student* phead)
     fclose(file);
     printf("数据已导出至%s", FILE_NAME);
     Sleep(3000);
-}
-
-//忘记这个要干嘛了。。。
-void SaveTheData(void)
-{
-    printf("SaveTheData: no error\n");
-    system("pause");
 }
 
 void SaveTheLog(const char* str)

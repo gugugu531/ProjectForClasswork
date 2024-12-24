@@ -11,8 +11,9 @@
 */
 void SaveTheLog(const char* str);
 
-void SaveTheData(void);
-
+/*
+*导入csv文件到内存中
+*/
 void ImportTheData(Student* phead);
 
 /*
@@ -21,6 +22,9 @@ void ImportTheData(Student* phead);
 */
 void ExportTheData(Student* phead);
 
+/*
+*展示内存中已有数据，传入链表头
+*/
 void ShowTheData(Student* phead);
 
 #endif
