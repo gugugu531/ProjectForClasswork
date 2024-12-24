@@ -1,6 +1,9 @@
 #ifndef DATA
 #define DATA
 
+#define FILE_NAME "file.csv"
+#define LOGFILE_NAME "logfile.txt"
+
 #include "ContactFileSystem.h"
 #include "Student.h"
 

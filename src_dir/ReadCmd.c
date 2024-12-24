@@ -21,10 +21,12 @@ Student* ReadCmd(Student* phead)
         case 2:
             ClearTheSurface();
             phead = Delete(phead);
+            SaveTheLog(DELETE);
             break;
         case 3:
             ClearTheSurface();
             Modify(phead);
+            SaveTheLog(MODIFY);
             break;
         case 4:
             ClearTheSurface();
@@ -42,6 +44,7 @@ Student* ReadCmd(Student* phead)
         case 7:
             ClearTheSurface();
             phead = ImportTheData(phead);
+            SaveTheLog(IMPORT_THE_DATA);
             break;
         case 8:
             ClearTheSurface();

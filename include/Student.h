@@ -1,6 +1,8 @@
 #ifndef STUDENT
 #define STUDENT
 
+#include "ContactFileSystem.h"
+
 typedef struct student
 {
     char StudentID[20];
