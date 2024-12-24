@@ -14,7 +14,7 @@ void SaveTheLog(const char* str);
 /*
 *导入csv文件到内存中
 */
-void ImportTheData(Student* phead);
+Student* ImportTheData(Student* phead);
 
 /*
 *在内存中有数据的情况下，将数据保存为csv格式

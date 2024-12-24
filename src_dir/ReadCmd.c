@@ -41,7 +41,7 @@ Student* ReadCmd(Student* phead)
             break;
         case 7:
             ClearTheSurface();
-            ImportTheData(phead);
+            phead = ImportTheData(phead);
             break;
         case 8:
             ClearTheSurface();

@@ -354,7 +354,7 @@ void FuzzySearch(Student* phead)
     scanf("%s", str);
 
     Student* current = phead;
-    Student* sortphead = NULL, *sortpnew = NULL, *sortpold = NULL;
+    Student *searchphead = NULL, *searchpnew = NULL, *searchpold = NULL;
     if (phead == NULL)
     {
         printf("数据为空，请先输入数据后再搜索！");
@@ -386,7 +386,7 @@ void FuzzySearch(Student* phead)
 
     //此处判断是否查找到结果，若没查找到，显示信息后直接退出程序
     //若查找到，则输出满足条件学生信息，输出后记得free
-    if ( sortphead == NULL)
+    if ( searchphead == NULL)
     {
         printf("没有查到相应结果，子功能即将退出！");
         Sleep(3000);
@@ -394,9 +394,9 @@ void FuzzySearch(Student* phead)
     }
 
     printf("搜索结果如下：\n");
-    ShowTheData(sortphead);
+    ShowTheData(searchphead);
 
-    for ( Student* FreeCurrent = sortphead, *FreePrevious = NULL; FreeCurrent != NULL; )
+    for ( Student* FreeCurrent = searchphead, *FreePrevious = NULL; FreeCurrent != NULL; )
     {
         FreePrevious = FreeCurrent;
         FreeCurrent = FreeCurrent->pnext;
@@ -412,30 +412,30 @@ void FuzzySearch(Student* phead)
 /*
 *申请内存（若申请不到则显示错误信息并退出程序）
 */
-    sortpnew = (Student*)malloc(sizeof(Student));
-    if (sortpnew == NULL)
+    searchpnew = (Student*)malloc(sizeof(Student));
+    if (searchpnew == NULL)
     {
         printf("堆区内存已用完！即将退出程序！");
         Sleep(3000);
         exit(0);
     }
 
-    if (sortphead == NULL)//第一次插入数据时若分配到内存空间则将链表头设置为pnew
+    if (searchphead == NULL)//第一次插入数据时若分配到内存空间则将链表头设置为pnew
     {
-        sortphead = sortpnew;
+        searchphead = searchpnew;
     }
 
-    if (sortpold != NULL)//如果已创建了一个节点就使老节点中指针指向下一个节点
-        sortpold->pnext = sortpnew;
+    if (searchpold != NULL)//如果已创建了一个节点就使老节点中指针指向下一个节点
+        searchpold->pnext = searchpnew;
 
-    *sortpnew = *current;
+    *searchpnew = *current;
 
 /*
 *此部分用来更新节点状态，保存现在已创建节点地址，
 *并将节点内指向下一节点的指针设为NULL，为接下来创建新节点做准备
 */
-    sortpold = sortpnew;
-    sortpold->pnext = NULL;
+    searchpold = searchpnew;
+    searchpold->pnext = NULL;
     
     goto L2;
 }

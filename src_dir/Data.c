@@ -35,7 +35,7 @@ void ShowTheData(Student* phead)
     scanf("%d", &cmd);
 }
 
-void ImportTheData(Student* phead)
+Student* ImportTheData(Student* phead)
 {
 
     int cmd;
@@ -48,9 +48,9 @@ void ImportTheData(Student* phead)
     case 1:
         fflush(stdin);
         break;
-    case 2:
+    case 0:
         fflush(stdin);
-        return;
+        return phead;
         break;
     default:
         printf("请输入正确的指令！");
@@ -63,7 +63,7 @@ void ImportTheData(Student* phead)
     {
         printf("内存中已写入数据！\n");
         printf("此功能即将退出。\n");
-        return;
+        return phead;
     }
     
 
@@ -81,8 +81,8 @@ void ImportTheData(Student* phead)
 
 
     Student* pnew = NULL, *pold = NULL;
-    
-    for ( ; ; )
+    char line[200];
+    for ( ; fscanf(file, "%s", line) != EOF; )
     {
 /*
 *申请内存（若申请不到则显示错误信息并退出程序）
@@ -105,8 +105,6 @@ void ImportTheData(Student* phead)
 
 //待办：检查数据合理性
 //待办：读入数据并写入链表模块
-        char line[100];
-        fscanf(file, "%s", line);
 
         char* token;
         token = strtok(line, ",");
@@ -145,6 +143,9 @@ void ImportTheData(Student* phead)
     }
     fclose(file);
     printf("已成功导入！");
+    Sleep(3000);
+
+    return phead;
 }
 
 void ExportTheData(Student* phead)
