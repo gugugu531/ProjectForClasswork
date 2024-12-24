@@ -33,7 +33,7 @@ void Modify(Student* phead);
 /*
 *模糊搜索
 */
-void FuzzySearch(void);
+void FuzzySearch(Student* phead);
 
 /*
 *传入链表头，传出链表头，由IDSort和NameSort两部分组成

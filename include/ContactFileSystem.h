@@ -1,5 +1,5 @@
-#ifndef UNTITLED
-#define UNTITLED
+#ifndef CONTACT_FILE_SYSTEM
+#define CONTACT_FILE_SYSTEM
 
 #define FILE_NAME "file.csv"
 #define LOGFILE_NAME "logfile.txt"

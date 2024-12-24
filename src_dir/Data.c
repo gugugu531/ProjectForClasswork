@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <windows.h>
-#include "../include/Untitled.h"
+#include "../include/ContactFileSystem.h"
 
 void ShowTheData(Student* phead)
 {
@@ -168,7 +168,7 @@ void ExportTheData(Student* phead)
     Student *current = phead;
 
     while (current) {
-        fprintf(file, "%s,%s,%s,%s,%s,%s,%s,%s,%s\n",
+        fprintf(file, "=\"%s\",%s,%s,%s,%s,%s,=\"%s\",=\"%s\",%s\n",//此处采用=\"%s"的写法是防止excel打开csv时自动将长整数用科学计数法表示
                 current->StudentID, current->Name, current->gender, current->school, current->major,
                 current->address, current->phoneNumber, current->qqNumber, current->emailAddr);
         fflush(stdout);

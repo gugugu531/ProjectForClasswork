@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../include/Untitled.h"
+#include "../include/ContactFileSystem.h"
 
 Student* ReadCmd(Student* phead)
 {
@@ -28,7 +28,7 @@ Student* ReadCmd(Student* phead)
             break;
         case 4:
             ClearTheSurface();
-            FuzzySearch();
+            FuzzySearch(phead);
             break;
         case 5:
             ClearTheSurface();

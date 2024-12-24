@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <windows.h>
-#include "../include/Untitled.h"
+#include "../include/ContactFileSystem.h"
 
 //待办：已有数据重新添加这种情况未解决
 Student* Create(Student* phead)
@@ -268,8 +268,6 @@ void Modify(Student* phead)
     }
 }
 
-//sort部分未完成
-
 Student* Sort(Student* phead)
 {
 
@@ -345,10 +343,49 @@ Student* NameSort(Student* phead)
 }
 
 
-void FuzzySearch(void)
+void FuzzySearch(Student* phead)
 {
 /*     printf("FuzzySearch: no error\n");
     system("pause"); */
 
+    printf("请输入想要查找的内容：（宁愿少字也不要错字）");
+
+    char str[20];
+    scanf("%s", str);
+
+    Student* current = phead;
+    Student* sortphead = NULL, *sortpnew = NULL, *sortpold = NULL;
+    if (phead == NULL)
+    {
+        printf("数据为空，请先输入数据后再搜索！");
+        Sleep(3000);
+        return;
+    }
+    
+    for ( ; current != NULL; current = current->pnext)
+    {
+        if (strstr(current->StudentID, str) != NULL)
+            goto L1;
+        if (strstr(current->Name, str) != NULL)
+            goto L1;
+        if (strstr(current->school, str) != NULL)
+            goto L1;
+        if (strstr(current->major, str) != NULL)
+            goto L1;
+        if (strstr(current->address, str) != NULL)
+            goto L1;
+        if (strstr(current->phoneNumber, str) != NULL)
+            goto L1;
+        if (strstr(current->qqNumber, str) != NULL)
+            goto L1;
+        if (strstr(current->emailAddr, str) != NULL)
+            goto L1;        
+    }
+
+    //此处判断是否查找到结果，若没查找到，显示信息后直接退出程序
+    //若查找到，则输出满足条件学生信息，输出后记得free
+
+    L1:
+    //此处重新创建一个链表，仅用于搜索，展示结束后记得free
     
 }
